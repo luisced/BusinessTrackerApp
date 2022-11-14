@@ -11,8 +11,8 @@ namespace BusinessTracker.Models
 
         //Se definen propiedades
 
-        public string NameId { get; set; } = "N/A";
-        public Comida Name { get; set; } = new Comida();
+        public string NameId { get; set; }
+        public Comida Name { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
 

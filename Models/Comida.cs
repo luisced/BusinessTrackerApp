@@ -6,7 +6,7 @@ namespace BusinessTracker.Models
     public class Comida
     {
         [Key]
-        public int Id { get; set; }
+        public int NameId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         public string Name { get; set; } = "N/A";
