@@ -10,12 +10,8 @@ namespace BusinessTracker.Models
         public int TransactionId { get; set; }
 
         //Se definen propiedades
-        [Column(TypeName = "nvarchar(50)")]
 
         public string NameId { get; set; } = "N/A";
-
-        [Column(TypeName = "nvarchar(50)")]
-
         public Comida Name { get; set; } = new Comida();
 
         [Column(TypeName = "nvarchar(50)")]
@@ -24,7 +20,7 @@ namespace BusinessTracker.Models
 
         [Column(TypeName = "nvarchar(50)")]
 
-        public string Description { get; set; } = "N/A";
+        public string? Description { get; set; }
 
         //Se define propiedad de fecha con formato año, mes, dia
         [DataType(DataType.Date)]
