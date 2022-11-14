@@ -10,9 +10,13 @@ namespace BusinessTracker.Models
         public int TransactionId { get; set; }
 
         //Se definen propiedades
+        // comida id
+        public int NameId { get; set; }
 
-        public string NameId { get; set; }
-        public Comida Name { get; set; }
+        public Comida Comida { get; set; }
+
+        // public id NameId { get; set; }
+
 
         [Column(TypeName = "nvarchar(50)")]
 
