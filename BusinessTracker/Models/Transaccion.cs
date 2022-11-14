@@ -24,7 +24,8 @@ namespace BusinessTracker.Models
 
         public string Description { get; set; } = "N/A";
 
-        [Column(TypeName = "nvarchar(10)")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
 
         public DateTime Date { get; set; } = DateTime.Now;
     }
