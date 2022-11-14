@@ -8,8 +8,8 @@ namespace BusinessTracker.Models
         [Key]
         public int Id { get; set; }
 
-        [Column (TypeName = "nvarchar(50)")]
-        public string Name { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
+        public string Name { get; set; } = "N/A";
 
         [Column(TypeName = "nvarchar(2)")]
         public string Icon { get; set; } = "";
