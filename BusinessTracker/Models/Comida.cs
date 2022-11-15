@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessTracker.Models
 {
-    public class Comida
+    public class Food
     {
         [Key]
-        public int Id { get; set; }
+        public int FoodId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         public string Name { get; set; } = "N/A";

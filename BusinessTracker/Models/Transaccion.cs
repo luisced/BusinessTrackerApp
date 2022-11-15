@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessTracker.Models
 {
-    public class Transaccion
+    public class Transaction
     {
         //Se define propiedad para clave con valor unico
         [Key]
@@ -12,11 +12,10 @@ namespace BusinessTracker.Models
         //Se definen propiedades
         [Column(TypeName = "nvarchar(50)")]
 
-        public string NameId { get; set; } = "N/A";
+        public string FoodId { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
 
-        public Comida Name { get; set; } = new Comida();
+        public Food Food { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
 
