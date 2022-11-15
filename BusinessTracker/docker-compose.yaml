@@ -10,14 +10,26 @@ services:
     volumes:
       - .:/src/app
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+    image: mcr.microsoft.com/mssql/server:2022-latest
     user: '0:0'
     container_name: sqlserver2019
     ports:
       - 1433:1433
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: PasswordO1.
+      MSSQL_SA_PASSWORD : PasswordO1.
       MSSQL_PID: Express
     volumes:
       - ~/docker/sqlserver-data:/var/opt/mssql
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: sqlserver2019
+      WORKSPACE_INSTALL_MSSQL: true
+    ports:
+      - 8080:8080
+    depends_on:
+      - sqlserver
+      
