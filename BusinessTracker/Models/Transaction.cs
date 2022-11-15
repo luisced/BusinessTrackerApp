@@ -13,7 +13,7 @@ namespace BusinessTracker.Models
         //Se definen propiedades
         [Column(TypeName = "nvarchar(50)")]
 
-        public string FoodId { get; set; } = "0";
+        public int FoodId { get; set; }
 
 
         public Food Food { get; set; } = new Food();
