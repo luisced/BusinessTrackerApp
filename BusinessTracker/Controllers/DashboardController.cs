@@ -25,18 +25,19 @@ namespace BusinessTracker.Controllers
                 .Include(x => x.Food)
                 .Where(y => y.Date >= StartDate && y.Date <= EndDate)
                 .ToListAsync();
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
 
             //Total Income
             int TotalIncome = SelectedTransactions
                 .Where(i => i.Food.Type == "Ingreso")
                 .Sum(j => j.Amount);
-            ViewBag.TotalIncome = TotalIncome.ToString("C0", CultureInfo.CurrentCulture);
+            ViewBag.TotalIncome = String.Format(culture, "{0:C0}", TotalIncome);
 
             //Total Expense
             int TotalExpense = SelectedTransactions
                 .Where(i => i.Food.Type == "Gasto")
                 .Sum(j => j.Amount);
-            ViewBag.TotalExpense = TotalExpense.ToString("C0");
+            ViewBag.TotalExpense = String.Format(culture, "{0:C0}", TotalExpense);
 
             // put $ in front of the number
             // string TotalIncome = TotalIncome.ToString("C0", CultureInfo.CurrentCulture);
@@ -44,7 +45,6 @@ namespace BusinessTracker.Controllers
 
             //Balance
             int Balance = TotalIncome - TotalExpense;
-            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
             culture.NumberFormat.CurrencyNegativePattern = 1;
             ViewBag.Balance = String.Format(culture, "{0:C0}", Balance);
 
