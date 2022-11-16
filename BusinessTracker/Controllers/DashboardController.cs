@@ -30,19 +30,25 @@ namespace BusinessTracker.Controllers
             int TotalIncome = SelectedTransactions
                 .Where(i => i.Food.Type == "Ingreso")
                 .Sum(j => j.Amount);
-            ViewBag.TotalIncome = TotalIncome.ToString("{0:C0}");
+            ViewBag.TotalIncome = TotalIncome.ToString("C0", CultureInfo.CurrentCulture);
 
             //Total Expense
             int TotalExpense = SelectedTransactions
                 .Where(i => i.Food.Type == "Gasto")
                 .Sum(j => j.Amount);
-            ViewBag.TotalExpense = TotalExpense.ToString("{0:C0}");
+            ViewBag.TotalExpense = TotalExpense.ToString("C0");
+
+            // put $ in front of the number
+            // string TotalIncome = TotalIncome.ToString("C0", CultureInfo.CurrentCulture);
+
 
             //Balance
             int Balance = TotalIncome - TotalExpense;
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
             culture.NumberFormat.CurrencyNegativePattern = 1;
             ViewBag.Balance = String.Format(culture, "{0:C0}", Balance);
+
+
 
             //Doughnut Chart - Expense By Food
             ViewBag.DoughnutChartData = SelectedTransactions
