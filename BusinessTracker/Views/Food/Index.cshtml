@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<BusinessTracker.Models.Food>
 
 @{
-    ViewData["PageTitle"] = "Categories";
-    ViewData["PageActionText"] = "+ New Food";
+    ViewData["PageTitle"] = "Platillos";
+    ViewData["PageActionText"] = "+ Nuevo Platillo";
     ViewData["PageActionUrl"] = "/Food/AddOrEdit";
 }
 
@@ -42,7 +42,7 @@
         <form action="/Food/Delete/${FoodId}" method="post">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
-            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
+            onclick="return confirm(&quot;Esta seguro que quiere eliminar este registro?&quot;)">
                 <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
             </button>
         </form>
