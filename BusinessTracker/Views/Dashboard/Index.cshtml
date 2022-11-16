@@ -89,9 +89,9 @@
                 </e-chart-chartarea>
                 <e-series-collection>
                     <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
-                              yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                              yName="income" name="Ingreso" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
                     <e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
-                              yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                              yName="expense" name="Gasto" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
                 </e-series-collection>
                 <e-chart-legendsettings position="Top" alignment="Far" toggleVisibility="false">
                     <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
@@ -113,9 +113,9 @@
                 <ejs-grid id="recent-transactions"
                 dataSource="@ViewBag.RecentTransactions" gridLines="None">
                     <e-grid-columns>
-                        <e-grid-column headerText="Food" field="FoodTitleWithIcon"></e-grid-column>
-                        <e-grid-column headerText="Date" field="Date" type="date" format="MMM-dd-yy"></e-grid-column>
-                        <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
+                        <e-grid-column headerText="Platillo" field="FoodTitleWithIcon"></e-grid-column>
+                        <e-grid-column headerText="Fecha" field="Date" type="date" format="MMM-dd-yy"></e-grid-column>
+                        <e-grid-column headerText="Monto" field="FormattedAmount" textAlign="Right"></e-grid-column>
                     </e-grid-columns>
                 </ejs-grid>
             </div>
