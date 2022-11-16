@@ -1,20 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 namespace BusinessTracker.Models
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext: DbContext
     {
-        [Key]
-        public int FoodId { get; set; }
+        public  ApplicationDbContext(DbContextOptions options): base(options)
+        {
+            
+        }
+        public DbSet<Transaction> Transactions{get; set;} 
 
-        [Column(TypeName = "nvarchar(50)")]
-        public string Name { get; set; } = "N/A";
-
-        [Column(TypeName = "nvarchar(2)")]
-        public string Icon { get; set; } = "";
-
-        [Column(TypeName = "nvarchar(50)")]
-        public string Type { get; set; } = "Outcome";
-
+        public DbSet<Food> Foods{get; set;} 
 
     }
 }
