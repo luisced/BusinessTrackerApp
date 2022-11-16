@@ -13,7 +13,7 @@ namespace BusinessTracker.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    FoodId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
@@ -21,7 +21,7 @@ namespace BusinessTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.FoodId);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +30,7 @@ namespace BusinessTracker.Migrations
                 {
                     TransactionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    FoodId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<int>(type: "int", nullable: false),
                     Note = table.Column<string>(type: "nvarchar(75)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -39,17 +39,17 @@ namespace BusinessTracker.Migrations
                 {
                     table.PrimaryKey("PK_Transactions", x => x.TransactionId);
                     table.ForeignKey(
-                        name: "FK_Transactions_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_Transactions_Categories_FoodId",
+                        column: x => x.FoodId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        principalColumn: "FoodId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_CategoryId",
+                name: "IX_Transactions_FoodId",
                 table: "Transactions",
-                column: "CategoryId");
+                column: "FoodId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

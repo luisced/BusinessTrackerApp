@@ -55,7 +55,7 @@
             <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
                 <e-accumulation-series-collection>
                     <e-accumulation-series dataSource="@ViewBag.DoughnutChartData"
-                                           xName="categoryTitleWithIcon" yName="amount"
+                                           xName="foodTitleWithIcon" yName="amount"
                                            innerRadius="60%" legendShape="Circle" 
                                            palettes=@(new string[]{"#0e8d76","#a4b219","#cb9b00","#8a442c","#0454b5","#7d0a0a","#822690","#4c2090","#313e93","#0096ac"})>
                         <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
@@ -113,7 +113,7 @@
                 <ejs-grid id="recent-transactions"
                 dataSource="@ViewBag.RecentTransactions" gridLines="None">
                     <e-grid-columns>
-                        <e-grid-column headerText="Food" field="CategoryTitleWithIcon"></e-grid-column>
+                        <e-grid-column headerText="Food" field="FoodTitleWithIcon"></e-grid-column>
                         <e-grid-column headerText="Date" field="Date" type="date" format="MMM-dd-yy"></e-grid-column>
                         <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
                     </e-grid-columns>

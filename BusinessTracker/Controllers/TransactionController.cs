@@ -40,7 +40,7 @@ namespace BusinessTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TransactionId,CategoryId,Amount,Note,Date")] Transaction transaction)
+        public async Task<IActionResult> AddOrEdit([Bind("TransactionId,FoodId,Amount,Note,Date")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -78,10 +78,10 @@ namespace BusinessTracker.Controllers
         [NonAction]
         public void PopulateCategories()
         {
-            var CategoryCollection = _context.Categories.ToList();
-            Food DefaultCategory = new Food() { CategoryId = 0, Title = "Choose a Food" };
-            CategoryCollection.Insert(0, DefaultCategory);
-            ViewBag.Categories = CategoryCollection;
+            var FoodCollection = _context.Categories.ToList();
+            Food DefaultFood = new Food() { FoodId = 0, Title = "Choose a Food" };
+            FoodCollection.Insert(0, DefaultFood);
+            ViewBag.Categories = FoodCollection;
         }
     }
 }

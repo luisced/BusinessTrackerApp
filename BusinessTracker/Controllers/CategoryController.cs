@@ -9,11 +9,11 @@ using BusinessTracker.Models;
 
 namespace BusinessTracker.Controllers
 {
-    public class CategoryController : Controller
+    public class FoodController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoryController(ApplicationDbContext context)
+        public FoodController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -42,18 +42,18 @@ namespace BusinessTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("CategoryId,Title,Icon,Type")] Food category)
+        public async Task<IActionResult> AddOrEdit([Bind("FoodId,Title,Icon,Type")] Food food)
         {
             if (ModelState.IsValid)
             {
-                if (category.CategoryId == 0)
-                    _context.Add(category);
+                if (food.FoodId == 0)
+                    _context.Add(food);
                 else
-                    _context.Update(category);
+                    _context.Update(food);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(food);
         }
 
 
@@ -66,10 +66,10 @@ namespace BusinessTracker.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
             }
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
+            var food = await _context.Categories.FindAsync(id);
+            if (food != null)
             {
-                _context.Categories.Remove(category);
+                _context.Categories.Remove(food);
             }
 
             await _context.SaveChangesAsync();

@@ -26,11 +26,11 @@ namespace BusinessTracker.Migrations
 
             modelBuilder.Entity("BusinessTracker.Models.Food", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("FoodId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodId"), 1L, 1);
 
                     b.Property<string>("Icon")
                         .IsRequired()
@@ -44,7 +44,7 @@ namespace BusinessTracker.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(10)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("FoodId");
 
                     b.ToTable("Categories");
                 });
@@ -60,7 +60,7 @@ namespace BusinessTracker.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("FoodId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -71,7 +71,7 @@ namespace BusinessTracker.Migrations
 
                     b.HasKey("TransactionId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("FoodId");
 
                     b.ToTable("Transactions");
                 });
@@ -80,7 +80,7 @@ namespace BusinessTracker.Migrations
                 {
                     b.HasOne("BusinessTracker.Models.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

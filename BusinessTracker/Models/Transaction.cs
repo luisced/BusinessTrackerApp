@@ -8,8 +8,8 @@ namespace BusinessTracker.Models
         [Key]
         public int TransactionId { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
-        public int CategoryId { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a food.")]
+        public int FoodId { get; set; }
         public Food? Food { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
@@ -21,7 +21,7 @@ namespace BusinessTracker.Models
         public DateTime Date { get; set; } = DateTime.Now;
 
         [NotMapped]
-        public string? CategoryTitleWithIcon
+        public string? FoodTitleWithIcon
         {
             get
             {

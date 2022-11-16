@@ -6,7 +6,7 @@ namespace BusinessTracker.Models
     public class Food
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int FoodId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Title is required.")]

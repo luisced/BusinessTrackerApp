@@ -47,10 +47,10 @@ namespace BusinessTracker.Controllers
             //Doughnut Chart - Expense By Food
             ViewBag.DoughnutChartData = SelectedTransactions
                 .Where(i => i.Food.Type == "Expense")
-                .GroupBy(j => j.Food.CategoryId)
+                .GroupBy(j => j.Food.FoodId)
                 .Select(k => new
                 {
-                    categoryTitleWithIcon = k.First().Food.Icon + " " + k.First().Food.Title,
+                    foodTitleWithIcon = k.First().Food.Icon + " " + k.First().Food.Title,
                     amount = k.Sum(j => j.Amount),
                     formattedAmount = k.Sum(j => j.Amount).ToString("C0"),
                 })
