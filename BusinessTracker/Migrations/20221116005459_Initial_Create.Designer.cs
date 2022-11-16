@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221116005201_InicialCreate")]
-    partial class InicialCreate
+    [Migration("20221116005459_Initial_Create")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
