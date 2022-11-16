@@ -13,20 +13,20 @@
                 <input type="hidden" name="FoodId" value="@Model.FoodId" />
                 <div class="mb-3">
                     <div class='e-btn-group custom-rbt-group'>
-                        <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
+                        <input type="radio" id="radioleft" name="Type" value="Gasto" checked="@(Model.Type=="Expense")" />
                         <label class="e-btn" for="radioleft">Gasto</label>
-                        <input type="radio" id="radiomiddle" name="Type" value="Income" checked="@(Model.Type=="Income")" />
+                        <input type="radio" id="radiomiddle" name="Type" value="Ingreso" checked="@(Model.Type=="Income")" />
                         <label class="e-btn" for="radiomiddle">Ingreso</label>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="title" placeholder="Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+                    <ejs-textbox id="title" placeholder="Nombre" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="Title" class="text-danger fs-6"></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
+                    <ejs-textbox id="icon" placeholder="Ícono" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
                 </div>
-                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+                <ejs-button id="submit" type="submit" content="Registrar" cssClass="e-success"></ejs-button>
             </form>
         </div>
 
