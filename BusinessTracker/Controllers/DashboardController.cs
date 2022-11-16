@@ -22,19 +22,19 @@ namespace BusinessTracker.Controllers
             DateTime EndDate = DateTime.Today;
 
             List<Transaction> SelectedTransactions = await _context.Transactions
-                .Include(x => x.Category)
+                .Include(x => x.Food)
                 .Where(y => y.Date >= StartDate && y.Date <= EndDate)
                 .ToListAsync();
 
             //Total Income
             int TotalIncome = SelectedTransactions
-                .Where(i => i.Category.Type == "Income")
+                .Where(i => i.Food.Type == "Income")
                 .Sum(j => j.Amount);
             ViewBag.TotalIncome = TotalIncome.ToString("C0");
 
             //Total Expense
             int TotalExpense = SelectedTransactions
-                .Where(i => i.Category.Type == "Expense")
+                .Where(i => i.Food.Type == "Expense")
                 .Sum(j => j.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
@@ -44,13 +44,13 @@ namespace BusinessTracker.Controllers
             culture.NumberFormat.CurrencyNegativePattern = 1;
             ViewBag.Balance = String.Format(culture, "{0:C0}", Balance);
 
-            //Doughnut Chart - Expense By Category
+            //Doughnut Chart - Expense By Food
             ViewBag.DoughnutChartData = SelectedTransactions
-                .Where(i => i.Category.Type == "Expense")
-                .GroupBy(j => j.Category.CategoryId)
+                .Where(i => i.Food.Type == "Expense")
+                .GroupBy(j => j.Food.CategoryId)
                 .Select(k => new
                 {
-                    categoryTitleWithIcon = k.First().Category.Icon + " " + k.First().Category.Title,
+                    categoryTitleWithIcon = k.First().Food.Icon + " " + k.First().Food.Title,
                     amount = k.Sum(j => j.Amount),
                     formattedAmount = k.Sum(j => j.Amount).ToString("C0"),
                 })
@@ -61,7 +61,7 @@ namespace BusinessTracker.Controllers
 
             //Income
             List<SplineChartData> IncomeSummary = SelectedTransactions
-                .Where(i => i.Category.Type == "Income")
+                .Where(i => i.Food.Type == "Income")
                 .GroupBy(j => j.Date)
                 .Select(k => new SplineChartData()
                 {
@@ -72,7 +72,7 @@ namespace BusinessTracker.Controllers
 
             //Expense
             List<SplineChartData> ExpenseSummary = SelectedTransactions
-                .Where(i => i.Category.Type == "Expense")
+                .Where(i => i.Food.Type == "Expense")
                 .GroupBy(j => j.Date)
                 .Select(k => new SplineChartData()
                 {
@@ -99,7 +99,7 @@ namespace BusinessTracker.Controllers
                                       };
             //Recent Transactions
             ViewBag.RecentTransactions = await _context.Transactions
-                .Include(i => i.Category)
+                .Include(i => i.Food)
                 .OrderByDescending(j => j.Date)
                 .Take(5)
                 .ToListAsync();

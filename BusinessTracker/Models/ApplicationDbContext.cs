@@ -8,6 +8,6 @@ namespace BusinessTracker.Models
         { }
 
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Food> Categories { get; set; }
     }
 }

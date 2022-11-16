@@ -24,7 +24,7 @@ namespace BusinessTracker.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BusinessTracker.Models.Category", b =>
+            modelBuilder.Entity("BusinessTracker.Models.Food", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -78,13 +78,13 @@ namespace BusinessTracker.Migrations
 
             modelBuilder.Entity("BusinessTracker.Models.Transaction", b =>
                 {
-                    b.HasOne("BusinessTracker.Models.Category", "Category")
+                    b.HasOne("BusinessTracker.Models.Food", "Food")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Food");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,7 @@ namespace BusinessTracker.Models
 
         [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
         public int CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public Food? Food { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
         public int Amount { get; set; }
@@ -25,7 +25,7 @@ namespace BusinessTracker.Models
         {
             get
             {
-                return Category == null ? "" : Category.Icon + " " + Category.Title;
+                return Food == null ? "" : Food.Icon + " " + Food.Title;
             }
         }
 
@@ -34,7 +34,7 @@ namespace BusinessTracker.Models
         {
             get
             {
-                return ((Category == null || Category.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
+                return ((Food == null || Food.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
             }
         }
 

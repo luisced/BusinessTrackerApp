@@ -18,7 +18,7 @@ namespace BusinessTracker.Controllers
             _context = context;
         }
 
-        // GET: Category
+        // GET: Food
         public async Task<IActionResult> Index()
         {
             return _context.Categories != null ?
@@ -27,22 +27,22 @@ namespace BusinessTracker.Controllers
         }
 
 
-        // GET: Category/AddOrEdit
+        // GET: Food/AddOrEdit
         public IActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
-                return View(new Category());
+                return View(new Food());
             else
                 return View(_context.Categories.Find(id));
 
         }
 
-        // POST: Category/AddOrEdit
+        // POST: Food/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("CategoryId,Title,Icon,Type")] Category category)
+        public async Task<IActionResult> AddOrEdit([Bind("CategoryId,Title,Icon,Type")] Food category)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace BusinessTracker.Controllers
         }
 
 
-        // POST: Category/Delete/5
+        // POST: Food/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

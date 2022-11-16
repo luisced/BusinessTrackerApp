@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessTracker.Models
 {
-    public class Category
+    public class Food
     {
         [Key]
         public int CategoryId { get; set; }
