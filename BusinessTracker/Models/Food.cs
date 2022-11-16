@@ -9,7 +9,8 @@ namespace BusinessTracker.Models
         public int FoodId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        public string Name { get; set; } = "N/A";
+        [Required(ErrorMessage = "Es necesario un nombre.")]
+        public string Name { get; set; } = "";
 
         [Column(TypeName = "nvarchar(2)")]
         public string Icon { get; set; } = "";
@@ -17,6 +18,14 @@ namespace BusinessTracker.Models
         [Column(TypeName = "nvarchar(50)")]
         public string Type { get; set; } = "Outcome";
 
+        [NotMapped]
+        public string? NameWithIcon
+        {
+            get
+            {
+                return this.Icon + " " + this.Name;
+            }
+        }
 
     }
 }
