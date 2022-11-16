@@ -79,7 +79,7 @@ namespace BusinessTracker.Controllers
         public void PopulateCategories()
         {
             var FoodCollection = _context.Categories.ToList();
-            Food DefaultFood = new Food() { FoodId = 0, Title = "Choose a Food" };
+            Food DefaultFood = new Food() { FoodId = 0, Title = "Elija un platillo" };
             FoodCollection.Insert(0, DefaultFood);
             ViewBag.Categories = FoodCollection;
         }

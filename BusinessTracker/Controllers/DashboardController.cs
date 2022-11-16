@@ -28,13 +28,13 @@ namespace BusinessTracker.Controllers
 
             //Total Income
             int TotalIncome = SelectedTransactions
-                .Where(i => i.Food.Type == "Income")
+                .Where(i => i.Food.Type == "Ingreso")
                 .Sum(j => j.Amount);
             ViewBag.TotalIncome = TotalIncome.ToString("C0");
 
             //Total Expense
             int TotalExpense = SelectedTransactions
-                .Where(i => i.Food.Type == "Expense")
+                .Where(i => i.Food.Type == "Gasto")
                 .Sum(j => j.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
@@ -46,7 +46,7 @@ namespace BusinessTracker.Controllers
 
             //Doughnut Chart - Expense By Food
             ViewBag.DoughnutChartData = SelectedTransactions
-                .Where(i => i.Food.Type == "Expense")
+                .Where(i => i.Food.Type == "Gasto")
                 .GroupBy(j => j.Food.FoodId)
                 .Select(k => new
                 {
@@ -61,7 +61,7 @@ namespace BusinessTracker.Controllers
 
             //Income
             List<SplineChartData> IncomeSummary = SelectedTransactions
-                .Where(i => i.Food.Type == "Income")
+                .Where(i => i.Food.Type == "Ingreso")
                 .GroupBy(j => j.Date)
                 .Select(k => new SplineChartData()
                 {
@@ -72,7 +72,7 @@ namespace BusinessTracker.Controllers
 
             //Expense
             List<SplineChartData> ExpenseSummary = SelectedTransactions
-                .Where(i => i.Food.Type == "Expense")
+                .Where(i => i.Food.Type == "Gasto")
                 .GroupBy(j => j.Date)
                 .Select(k => new SplineChartData()
                 {

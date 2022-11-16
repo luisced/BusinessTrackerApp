@@ -8,11 +8,11 @@ namespace BusinessTracker.Models
         [Key]
         public int TransactionId { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a food.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Por favor seleccione un platillo")]
         public int FoodId { get; set; }
         public Food? Food { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
+        [Range(1, int.MaxValue, ErrorMessage = "El monto debe ser mayor a 0")]
         public int Amount { get; set; }
 
         [Column(TypeName = "nvarchar(75)")]
@@ -34,7 +34,7 @@ namespace BusinessTracker.Models
         {
             get
             {
-                return ((Food == null || Food.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
+                return ((Food == null || Food.Type == "Gasto") ? "- " : "+ ") + Amount.ToString("C0");
             }
         }
 
