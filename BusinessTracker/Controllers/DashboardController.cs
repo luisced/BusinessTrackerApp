@@ -30,13 +30,13 @@ namespace BusinessTracker.Controllers
             int TotalIncome = SelectedTransactions
                 .Where(i => i.Food.Type == "Ingreso")
                 .Sum(j => j.Amount);
-            ViewBag.TotalIncome = TotalIncome.ToString("C0");
+            ViewBag.TotalIncome = TotalIncome.ToString("{0:C0}");
 
             //Total Expense
             int TotalExpense = SelectedTransactions
                 .Where(i => i.Food.Type == "Gasto")
                 .Sum(j => j.Amount);
-            ViewBag.TotalExpense = TotalExpense.ToString("C0");
+            ViewBag.TotalExpense = TotalExpense.ToString("{0:C0}");
 
             //Balance
             int Balance = TotalIncome - TotalExpense;
