@@ -3,7 +3,7 @@
 @{
     ViewData["PageTitle"] = "Platillos";
     ViewData["PageActionText"] = "+ Nuevo Platillo";
-    ViewData["PageActionUrl"] = "/Food/AddOrEdit";
+    ViewData["PageActionUrl"] = "/Comida/Crear o Editar";
 }
 
 
@@ -13,9 +13,9 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Food" field="TitleWithIcon"></e-grid-column>
-                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+                <e-grid-column headerText="Platillo" field="TitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Concepto" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Acciones" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
     </div>
