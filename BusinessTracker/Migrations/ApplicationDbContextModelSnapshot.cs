@@ -17,34 +17,34 @@ namespace BusinessTracker.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BusinessTracker.Models.Food", b =>
+            modelBuilder.Entity("BusinessTracker.Models.Category", b =>
                 {
-                    b.Property<int>("FoodId")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FoodId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("Icon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(2)");
+                        .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(10)");
 
-                    b.HasKey("FoodId");
+                    b.HasKey("CategoryId");
 
-                    b.ToTable("Foods");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BusinessTracker.Models.Transaction", b =>
@@ -53,39 +53,36 @@ namespace BusinessTracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"), 1L, 1);
 
-                    b.Property<string>("Amount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("FoodId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(75)");
 
                     b.HasKey("TransactionId");
 
-                    b.HasIndex("FoodId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("BusinessTracker.Models.Transaction", b =>
                 {
-                    b.HasOne("BusinessTracker.Models.Food", "Food")
+                    b.HasOne("BusinessTracker.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("FoodId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Food");
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }
