@@ -32,7 +32,6 @@ namespace BusinessTracker.Models
         [NotMapped]
         public string? FormattedAmount
         {
-            CultureInfo
 
             get
             {
