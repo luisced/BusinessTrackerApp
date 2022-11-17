@@ -50,15 +50,15 @@ namespace BusinessTracker.Controllers
 
 
 
-            //Doughnut Chart - Expense By Food
+            //Doughnut Chart - Transaccion por Platillo
             ViewBag.DoughnutChartData = SelectedTransactions
                 .Where(i => i.Food.Type == "Gasto")
                 .GroupBy(j => j.Food.FoodId)
                 .Select(k => new
                 {
                     foodTitleWithIcon = k.First().Food.Icon + " " + k.First().Food.Title,
-                    amount = k.Sum(j => j.Amount),
-                    formattedAmount2 = String.Format(culture, "{0:C0}", k.Sum(j => j.Amount))
+                    // amount = k.Sum(j => j.Amount),
+                    amount = String.Format(culture, "{0:C0}", k.Sum(j => j.Amount))
                 })
                 .OrderByDescending(l => l.amount)
                 .ToList();
@@ -73,6 +73,7 @@ namespace BusinessTracker.Controllers
                 {
                     day = k.First().Date.ToString("dd-MMM"),
                     income = k.Sum(l => l.Amount)
+
                 })
                 .ToList();
 
