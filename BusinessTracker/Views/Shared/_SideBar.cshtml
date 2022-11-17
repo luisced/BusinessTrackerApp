@@ -2,8 +2,41 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
-  
+    List <Object> menuItems = new List<Object>();
+        menuItems.Add(new
+        {
+            text = "Menú",
+            separator = true,
+        }); 
+        menuItems.Add(new
+        {
+            text = "Platillos",
+            url = "/Food",
+            iconCss = "fa-solid fa-folder-closed",
+        }); 
+        menuItems.Add(new
+        {
+            text = "Transacciones",
+            url = "/Transaction",
+            iconCss = "fa-solid fa-arrow-right-arrow-left",
+        }); 
+        menuItems.Add(new
+        {
+            text = "Dashboard",
+            url = "/",
+            iconCss = "fa-solid fa-box",
+        }); 
+        menuItems.Add(new
+        {
+            text = "Bonus",
+            separator = true,
+        }); 
+        menuItems.Add(new
+        {
+            text = "Setting especial",
+            url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            iconCss = "fa-solid fa-gear",
+        }); 
 }
 
 
@@ -22,7 +55,7 @@
         <div class="profile-wrapper">
             <img class="profile-pic" src="~/profile.png" />
             <div class="titles d-flex flex-column ps-3">
-                <h6 class="mb-0">Dani Mou</h6>
+                <h6 class="mb-0">Danny Mou</h6>
                 <span class="text-muted">Detectov</span>
             </div>
         </div>
