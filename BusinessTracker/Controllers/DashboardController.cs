@@ -57,8 +57,8 @@ namespace BusinessTracker.Controllers
                 .Select(k => new
                 {
                     foodTitleWithIcon = k.First().Food.Icon + " " + k.First().Food.Title,
-                    // amount = k.Sum(j => j.Amount),
-                    amount = String.Format(culture, "{0:C0}", k.Sum(j => j.Amount))
+                    amount = k.Sum(j => j.Amount),
+                    // formattedAmount2 = String.Format(culture, "{0:C0}", k.Sum(j => j.Amount))
                 })
                 .OrderByDescending(l => l.amount)
                 .ToList();

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Globalization;
 namespace BusinessTracker.Models
 {
     public class Transaction
@@ -32,9 +32,12 @@ namespace BusinessTracker.Models
         [NotMapped]
         public string? FormattedAmount
         {
+            CultureInfo
+
             get
             {
-                return ((Food == null || Food.Type == "Gasto") ? "- " : "+ ") + Amount.ToString("C0");
+                return ((Food == null || Food.Type == "Gasto") ? "- " : "+ ") + String.Format(CultureInfo.CreateSpecificCulture("en-US"), "{0:C0}", Amount);
+
             }
         }
 
