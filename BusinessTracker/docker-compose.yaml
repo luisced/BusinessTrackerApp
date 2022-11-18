@@ -1,0 +1,41 @@
+version: "3.3"
+networks:
+  app-tier:
+    driver: bridge
+services:
+  web:
+    container_name: business_tracker_web
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    
+    volumes:
+      - .:/src/app
+    networks:
+      - app-tier
+  db:
+      image: mysql:5.7
+      container_name: homada_db
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: example
+        MYSQL_PASSWORD: example
+        MYSQL_DATABASE: BusinessTracker
+        MYSQL_USER: generic_operator
+      command: --default-authentication-plugin=mysql_native_password --bind-address=0.0.0.0 --explicit_defaults_for_timestamp
+      volumes:
+        - ./sql:/docker-entrypoint-initdb.d
+      ports:
+        - 3306:3306
+      networks:
+        - app-tier
+  adminer:
+    image: adminer
+    container_name: business_tracker_adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - app-tier
